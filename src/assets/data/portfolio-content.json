@@ -1,0 +1,273 @@
+{
+  "personal": {
+    "fullName": "Rohit Singh",
+    "designation": "Senior Software Engineer",
+    "profileImage": "assets/images/Rohit-Pic.png",
+    "intro": "I'm a Senior Software Engineer obsessed with building scalable, responsive web applications that don't break at 2 AM. With deep expertise in distributed systems, microservices, and full-stack development using C#, Python, and .NET Core, I turn complex problems into elegant solutions. By day, I architect robust applications and mentor teams; by night, I am either at the gym or reading tech books. I care about clean architecture, performance, and building software that remains maintainable under real production pressure."
+  },
+  "socialLinks": [
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/rohit-singh-wd1993/",
+      "title": "LinkedIn Profile",
+      "icon": "linkedin",
+      "theme": "linkedin"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "url": "https://github.com/rohit-singh-wd1993",
+      "title": "GitHub Profile",
+      "icon": "github",
+      "theme": "github"
+    },
+    {
+      "id": "medium",
+      "label": "Medium",
+      "url": "https://medium.com/@rohitsinghwd1993",
+      "title": "Medium Profile",
+      "icon": "medium",
+      "theme": "medium"
+    },
+    {
+      "id": "twitter",
+      "label": "Twitter",
+      "url": "https://twitter.com/rohit_singh_wd",
+      "title": "Twitter Profile",
+      "icon": "twitter",
+      "theme": "twitter"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/rohit.singh.wd/",
+      "title": "Instagram Profile",
+      "icon": "instagram",
+      "theme": "instagram"
+    }
+  ],
+  "skills": [
+    {
+      "name": "C#",
+      "category": "Backend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+    },
+    {
+      "name": "Python",
+      "category": "Backend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+    },
+    {
+      "name": ".Net Core",
+      "category": "Backend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg"
+    },
+    {
+      "name": "FastAPI",
+      "category": "Backend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg"
+    },
+    {
+      "name": "Angular",
+      "category": "Frontend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+    },
+    {
+      "name": "TypeScript",
+      "category": "Frontend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+    },
+    {
+      "name": "TailwindCSS",
+      "category": "Frontend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+    },
+    {
+      "name": "RxJS",
+      "category": "Frontend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rxjs/rxjs-original.svg"
+    },
+    {
+      "name": "HTML5",
+      "category": "Frontend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+    },
+    {
+      "name": "CSS3",
+      "category": "Frontend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+    },
+    {
+      "name": "JavaScript",
+      "category": "Frontend",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+    },
+    {
+      "name": "MongoDB",
+      "category": "Database",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+    },
+    {
+      "name": "MySQL",
+      "category": "Database",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+    },
+    {
+      "name": "AWS",
+      "category": "Cloud & DevOps",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+    },
+    {
+      "name": "Docker",
+      "category": "Cloud & DevOps",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+    },
+    {
+      "name": "Kubernetes",
+      "category": "Cloud & DevOps",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg"
+    },
+    {
+      "name": "CI/CD",
+      "category": "Cloud & DevOps",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+    },
+    {
+      "name": "GitHub Actions",
+      "category": "Cloud & DevOps",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+    },
+    {
+      "name": "Git",
+      "category": "Tools",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+    },
+    {
+      "name": "GitHub",
+      "category": "Tools",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+    },
+    {
+      "name": "VS Code",
+      "category": "Tools",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
+    },
+    {
+      "name": "Postman",
+      "category": "Tools",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
+    },
+    {
+      "name": "Webpack",
+      "category": "Tools",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg"
+    }
+  ],
+  "blog": {
+    "mediumUsername": "rohitsinghwd1993",
+    "devtoUsername": "devto-username"
+  },
+  "experience": [
+    {
+      "id": "1",
+      "title": "Senior Software Engineer",
+      "company": "CLARIO",
+      "location": "Bengaluru, Karnataka",
+      "duration": {
+        "start": "Jul 2024",
+        "end": "Present"
+      },
+      "description": "Architecting and owning production-grade serverless data ingestion platforms and event-driven processing systems for healthcare applications, focusing on scalability and reliability.",
+      "responsibilities": [
+        "Architected and owned a production-grade serverless data ingestion platform on AWS using Python, processing more than 10K health events per day with 99.9% pipeline uptime.",
+        "Designed an event-driven processing pipeline using RabbitMQ and background workers to handle large clinical data files and eliminate API timeouts.",
+        "Implemented extensible device handlers in C# and .NET, enabling onboarding of multiple medical data sources for downstream analytics.",
+        "Integrated LLM-assisted workflows into daily engineering practices to accelerate delivery and reduce boilerplate authoring time."
+      ],
+      "isCurrentRole": true
+    },
+    {
+      "id": "2",
+      "title": "Software Development Engineer II",
+      "company": "EPAM SYSTEMS",
+      "location": "Gurgaon, Haryana",
+      "duration": {
+        "start": "Aug 2022",
+        "end": "Jun 2024"
+      },
+      "description": "Engineered reusable Angular component libraries and led infrastructure migrations while optimizing CI/CD pipelines for improved developer productivity and system performance.",
+      "responsibilities": [
+        "Engineered a reusable Angular reactive form component library with real-time validation and dynamic field rendering.",
+        "Led migration of file storage from network paths to AWS S3, reducing retrieval latency and operational cost.",
+        "Optimized GitLab CI/CD pipelines by restructuring stages and implementing dependency caching strategies.",
+        "Improved API throughput using async programming, multithreading, and SQL query optimization.",
+        "Expanded automated test coverage to reduce production defects and improve release confidence."
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Full Stack Developer",
+      "company": "XCEEDANCE CONSULTING INDIA PVT LTD",
+      "location": "Gurgaon, Haryana",
+      "duration": {
+        "start": "Jan 2021",
+        "end": "Aug 2022"
+      },
+      "description": "Designed event-driven notification systems and automated reporting workflows while building UI components for underwriting processes.",
+      "responsibilities": [
+        "Designed an event-driven notification system using the transactional outbox pattern with .NET background services.",
+        "Built automated scheduled reporting generation using C# and Hangfire to reduce manual workload.",
+        "Integrated compliance webhooks into the underwriting platform to reduce manual review effort.",
+        "Implemented Angular workflow screens with dynamic behavior and real-time validation."
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Software Developer",
+      "company": "IP INTEGRATED SERVICE PVT LTD",
+      "location": "Gurgaon, Haryana",
+      "duration": {
+        "start": "Apr 2018",
+        "end": "Oct 2020"
+      },
+      "description": "Built warehouse management features with barcode integration and automated invoice generation while developing APIs for mobile synchronization.",
+      "responsibilities": [
+        "Integrated barcode scanning into a warehouse management system to reduce picking errors.",
+        "Automated PDF invoice generation using C# and Aspose.PDF for high-volume daily processing.",
+        "Built REST APIs using .NET Framework and MySQL to synchronize inventory and order data with Android applications."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "Project 1",
+      "description": "Project description goes here.",
+      "tags": ["Angular", "TypeScript", "TailwindCSS"],
+      "featured": true
+    },
+    {
+      "id": "project-2",
+      "title": "Project 2",
+      "description": "Project description goes here.",
+      "tags": [".NET", "AWS", "PostgreSQL"]
+    },
+    {
+      "id": "project-3",
+      "title": "Project 3",
+      "description": "Project description goes here.",
+      "tags": ["Python", "FastAPI", "Docker"]
+    }
+  ],
+  "resume": {
+    "googleDriveLink": "https://drive.google.com/file/d/1_U5rL45p7Eb38f1K48jiREvaieJPdP55/view?usp=sharing",
+    "fileName": "Resume.pdf",
+    "title": "Resume"
+  }
+}

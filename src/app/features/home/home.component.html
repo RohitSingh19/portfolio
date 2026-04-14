@@ -1,0 +1,160 @@
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+  <!-- Animated Background Elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob dark:opacity-10"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000 dark:opacity-10"></div>
+    <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000 dark:opacity-10"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 container-custom text-center max-w-4xl pt-24 md:pt-28">
+    <!-- Profile Picture Section -->
+    <div class="mb-10 flex justify-center" data-aos="zoom-in" data-aos-duration="800">
+      <div class="relative group profile-wrapper">
+        <!-- Dashed rotating ring -->
+        <div class="absolute -inset-4 rounded-full profile-dashed-ring"></div>
+        <!-- Sparkle dots -->
+        <div class="absolute -inset-2 rounded-full profile-sparkle-orbit">
+          <span class="absolute w-2.5 h-2.5 bg-yellow-300 rounded-full shadow-lg shadow-yellow-300/60 profile-sparkle-dot" style="top: 0; left: 50%; transform: translateX(-50%)"></span>
+          <span class="absolute w-2 h-2 bg-cyan-300 rounded-full shadow-lg shadow-cyan-300/60 profile-sparkle-dot" style="bottom: 0; right: 10%; "></span>
+          <span class="absolute w-1.5 h-1.5 bg-pink-300 rounded-full shadow-lg shadow-pink-300/60 profile-sparkle-dot" style="top: 25%; left: 0;"></span>
+        </div>
+        <!-- Main image container -->
+        <div class="relative w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full p-1 profile-border-gradient profile-hover-lift">
+          <img
+            [src]="profileImage()"
+            alt="Profile Picture"
+            class="w-full h-full rounded-full object-cover bg-white dark:bg-gray-800 ring-4 ring-white/20 dark:ring-gray-700/30"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Name and Title -->
+    <div data-aos="fade-up" data-aos-delay="100">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+        Hi, I'm
+        <span class="text-gradient animate-pulse-glow">{{ fullName() }}</span>
+      </h1>
+      <p class="text-2xl md:text-3xl text-blue-600 dark:text-blue-400 font-semibold mb-6">
+        {{ jobTitle() }}
+      </p>
+      <p class="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
+        {{ aboutText() }}
+      </p>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col md:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
+      <a
+        routerLink="/projects"
+        class="btn-primary bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg inline-block"
+      >
+        View My Work
+      </a>
+      <a
+        routerLink="/contact"
+        class="btn-secondary border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-200"
+      >
+        Get In Touch
+      </a>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="mt-16 animate-bounce">
+      <svg class="w-6 h-6 mx-auto text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Social Media Section -->
+<section class="py-16 bg-white dark:bg-gray-800">
+  <div class="container-custom text-center">
+    <h2 class="section-title text-3xl mb-4" data-aos="fade-up">Connect With Me</h2>
+    <p class="section-subtitle mb-12" data-aos="fade-up" data-aos-delay="100">
+      Follow my journey and stay updated with my latest work
+    </p>
+    
+    <!-- Social Media Links -->
+    <div class="flex justify-center items-center gap-8 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+      <a
+        *ngFor="let socialLink of socialLinks()"
+        [href]="socialLink.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex items-center gap-3 bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+        [ngClass]="getSocialCardClasses(socialLink.theme)"
+        [title]="socialLink.title"
+      >
+        <svg class="w-6 h-6 transition-colors duration-200" viewBox="0 0 24 24" fill="currentColor" [ngClass]="getSocialIconClasses(socialLink.theme)">
+          <path [attr.d]="getSocialIconPath(socialLink.icon)" />
+        </svg>
+        <span class="font-medium text-gray-700 dark:text-gray-300 transition-colors duration-200" [ngClass]="getSocialLabelClasses(socialLink.theme)">{{ socialLink.label }}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack Section -->
+<section class="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+  <div class="container-custom">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="section-title text-4xl">Tech Stack</h2>
+      <p class="section-subtitle">Technologies and tools I'm proficient with</p>
+    </div>
+
+    <!-- Tech Stack by Category -->
+    <div class="space-y-16">
+      <div *ngFor="let category of categories(); let i = index" data-aos="fade-up" [attr.data-aos-delay]="(i * 100).toString()">
+        <!-- Category Header -->
+        <div class="flex items-center gap-3 mb-8">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">{{ category }}</h3>
+          <span class="w-1 h-8 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full"></span>
+        </div>
+
+        <!-- Technology Cards Grid -->
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 md:gap-6">
+          <div
+            *ngFor="let tech of getTechnologiesByCategory(category)"
+            class="group flex flex-col items-center gap-3 p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            [title]="tech.name"
+          >
+            <!-- Logo Container -->
+            <div class="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+              <img
+                [src]="tech.logo"
+                [alt]="tech.name"
+                class="w-full h-full object-contain filter group-hover:drop-shadow-lg transition-all duration-300"
+                loading="lazy"
+              />
+            </div>
+            
+            <!-- Tech Name -->
+            <span class="text-xs md:text-sm font-semibold text-gray-900 dark:text-white text-center line-clamp-2">
+              {{ tech.name }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-white dark:bg-gray-800">
+  <div class="container-custom text-center max-w-2xl" data-aos="fade-up">
+    <h2 class="section-title text-4xl mb-4">Ready to Work Together?</h2>
+    <p class="section-subtitle text-lg mb-8">
+      Let's create something amazing. Get in touch and let's discuss your project.
+    </p>
+    <a
+      routerLink="/contact"
+      class="btn-primary bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg inline-block text-lg"
+    >
+      Start a Project
+    </a>
+  </div>
+</section>

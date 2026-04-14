@@ -1,0 +1,27 @@
+/* Navbar Component Styles */
+
+/* Animation for mobile menu slide down */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Active link underline animation */
+.active {
+  @apply text-blue-600 dark:text-blue-400;
+}
+
+/* Smooth transitions for dark mode */
+:root {
+  color-scheme: light dark;
+}
