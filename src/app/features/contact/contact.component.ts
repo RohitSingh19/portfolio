@@ -1,6 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
+import { finalize } from 'rxjs/operators';
+import { ContactService } from '../../core/services/contact.service';
+
+const notBlankValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const value = control.value as string | null;
+  if (value == null) return { blank: true };
+  return value.trim().length === 0 ? { blank: true } : null;
+};
 
 @Component({
   selector: 'app-contact',
@@ -11,7 +27,20 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
       <h1 class="section-title">Get In Touch</h1>
       <p class="section-subtitle">I'd love to hear from you</p>
       <div class="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg p-8 smooth-shadow">
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div
+          *ngIf="submitSuccess"
+          class="mb-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 dark:border-green-900 dark:bg-green-950/30 dark:text-green-300"
+        >
+          {{ submitSuccess }}
+        </div>
+        <div
+          *ngIf="submitError"
+          class="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300"
+        >
+          {{ submitError }}
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
           <div class="mb-6">
             <label class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Name</label>
             <input 
@@ -19,6 +48,18 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
               formControlName="name"
               class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('name') && nameControl.errors?.['required']">
+              Name is required.
+            </p>
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('name') && nameControl.errors?.['blank']">
+              Name cannot be blank.
+            </p>
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('name') && nameControl.errors?.['minlength']">
+              Name length must be greater than 5 characters.
+            </p>
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('name') && nameControl.errors?.['maxlength']">
+              Name length must be less than 30 characters.
+            </p>
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Email</label>
@@ -27,16 +68,47 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
               formControlName="email"
               class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('email') && emailControl.errors?.['required']">
+              Email is required.
+            </p>
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('email') && emailControl.errors?.['email']">
+              Enter a valid email address.
+            </p>
           </div>
           <div class="mb-6">
-            <label class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Message</label>
+            <div class="mb-2 flex items-center justify-between">
+              <label class="block text-gray-700 dark:text-gray-300 font-bold">Message</label>
+              <span
+                class="text-sm font-medium"
+                [class.text-green-600]="messageLength === 140"
+                [class.dark:text-green-400]="messageLength === 140"
+                [class.text-red-500]="messageLength !== 140"
+              >
+                {{ messageLength }}/140
+              </span>
+            </div>
             <textarea 
               formControlName="message"
               rows="5"
               class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             ></textarea>
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('message') && messageControl.errors?.['required']">
+              Message is required.
+            </p>
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('message') && messageControl.errors?.['blank']">
+              Message cannot be blank.
+            </p>
+            <p class="mt-2 text-sm text-red-500" *ngIf="showError('message') && (messageControl.errors?.['minlength'] || messageControl.errors?.['maxlength'])">
+              Message must be exactly 140 characters long.
+            </p>
           </div>
-          <button type="submit" class="btn-primary w-full">Send Message</button>
+          <button
+            type="submit"
+            class="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
+            [disabled]="contactForm.invalid || isSubmitting"
+          >
+            {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+          </button>
         </form>
       </div>
     </section>
@@ -44,13 +116,81 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
   styles: [],
 })
 export class ContactComponent {
+  submitted = false;
+  isSubmitting = false;
+  submitSuccess = '';
+  submitError = '';
+
   contactForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    message: new FormControl(''),
+    name: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, notBlankValidator, Validators.minLength(6), Validators.maxLength(29)],
+    }),
+    email: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.email],
+    }),
+    message: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, notBlankValidator, Validators.minLength(140), Validators.maxLength(140)],
+    }),
   });
 
+  private contactService = inject(ContactService);
+
+  get nameControl(): FormControl<string> {
+    return this.contactForm.controls.name;
+  }
+
+  get emailControl(): FormControl<string> {
+    return this.contactForm.controls.email;
+  }
+
+  get messageControl(): FormControl<string> {
+    return this.contactForm.controls.message;
+  }
+
+  get messageLength(): number {
+    return this.messageControl.value.length;
+  }
+
+  showError(controlName: 'name' | 'email' | 'message'): boolean {
+    const control = this.contactForm.get(controlName);
+    return !!control && control.invalid && (control.touched || this.submitted);
+  }
+
   onSubmit(): void {
-    console.log(this.contactForm.value);
+    this.submitted = true;
+    this.contactForm.markAllAsTouched();
+    this.submitSuccess = '';
+    this.submitError = '';
+
+    if (this.contactForm.invalid || this.isSubmitting) {
+      return;
+    }
+
+    this.isSubmitting = true;
+
+    const payload = {
+      name: this.nameControl.value.trim(),
+      email: this.emailControl.value.trim(),
+      message: this.messageControl.value,
+    };
+
+    this.contactService
+      .submitContactForm(payload)
+      .pipe(finalize(() => (this.isSubmitting = false)))
+      .subscribe({
+        next: () => {
+          this.submitSuccess = 'Message sent successfully.';
+          this.submitted = false;
+          this.contactForm.reset({ name: '', email: '', message: '' });
+          this.contactForm.markAsPristine();
+          this.contactForm.markAsUntouched();
+        },
+        error: () => {
+          this.submitError = 'Unable to send message right now. Please try again later.';
+        },
+      });
   }
 }
