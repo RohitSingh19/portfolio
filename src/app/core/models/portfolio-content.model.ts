@@ -33,13 +33,11 @@ export interface ExperienceItem {
 }
 
 export interface ProjectItem {
-  id: string;
   title: string;
-  description: string;
-  tags: string[];
-  liveUrl?: string;
-  repoUrl?: string;
-  featured?: boolean;
+  'repo-link': string;
+  'live-preview-link'?: string;
+  'live-preview-description': string;
+  'tech stack': string[];
 }
 
 export interface ResumeConfig {

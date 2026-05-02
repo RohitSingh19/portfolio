@@ -246,23 +246,24 @@
   ],
   "projects": [
     {
-      "id": "project-1",
       "title": "Project 1",
-      "description": "Project description goes here.",
-      "tags": ["Angular", "TypeScript", "TailwindCSS"],
-      "featured": true
+      "repo-link": "https://github.com/rohit-singh-wd1993/project-1",
+      "live-preview-link": "https://project-1-demo.netlify.app",
+      "live-preview-description": "Project description goes here.",
+      "tech stack": ["Angular", "TypeScript", "TailwindCSS"]
     },
     {
-      "id": "project-2",
       "title": "Project 2",
-      "description": "Project description goes here.",
-      "tags": [".NET", "AWS", "PostgreSQL"]
+      "repo-link": "https://github.com/rohit-singh-wd1993/project-2",
+      "live-preview-description": "Project description goes here.",
+      "tech stack": [".NET", "AWS", "PostgreSQL"]
     },
     {
-      "id": "project-3",
       "title": "Project 3",
-      "description": "Project description goes here.",
-      "tags": ["Python", "FastAPI", "Docker"]
+      "repo-link": "https://github.com/rohit-singh-wd1993/project-3",
+      "live-preview-link": "https://project-3-demo.vercel.app",
+      "live-preview-description": "Project description goes here.",
+      "tech stack": ["Python", "FastAPI", "Docker"]
     }
   ],
   "resume": {
