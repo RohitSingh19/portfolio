@@ -34,7 +34,7 @@ const notBlankValidator: ValidatorFn = (control: AbstractControl): ValidationErr
               class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
             <p class="mt-2 text-sm text-red-500" *ngIf="showError('name') && nameControl.errors?.['blank']">
-              Name cannot be blank.
+              Name is required.
             </p>
             <p class="mt-2 text-sm text-red-500" *ngIf="showError('name') && nameControl.errors?.['minlength']">
               Name length must be greater than 5 characters.
