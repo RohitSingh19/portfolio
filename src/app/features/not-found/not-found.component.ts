@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
       <p class="text-8xl font-extrabold text-blue-600 dark:text-blue-400 mb-4">404</p>
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">Page Not Found</h1>
       <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-md">
-        The page you're looking for doesn't exist or may have been moved.
+        The page you're looking for doesn't exist.
       </p>
       <a routerLink="/" class="btn-primary">Back to Home</a>
     </section>
