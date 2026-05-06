@@ -13,23 +13,18 @@ import { PortfolioContentService } from '../../core/services/portfolio-content.s
       <p class="section-subtitle">Showcase of my work and accomplishments</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <article *ngFor="let project of projects()" class="bg-white dark:bg-gray-800 rounded-lg p-6 smooth-shadow border border-gray-100 dark:border-gray-700">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ project.title }}</h3>
-            <span *ngIf="project.featured" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200">
-              Featured
-            </span>
-          </div>
-          <p class="text-gray-600 dark:text-gray-400 mb-5">{{ project.description }}</p>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">{{ project.title }}</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-5">{{ project['live-preview-description'] }}</p>
           <div class="flex flex-wrap gap-2 mb-5">
-            <span *ngFor="let tag of project.tags" class="text-xs font-medium px-3 py-1 rounded-full bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200">
-              {{ tag }}
+            <span *ngFor="let tech of project['tech stack']" class="text-xs font-medium px-3 py-1 rounded-full bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200">
+              {{ tech }}
             </span>
           </div>
           <div class="flex gap-4 text-sm font-medium">
-            <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">
-              Live Demo
+            <a *ngIf="project['live-preview-link']" [href]="project['live-preview-link']" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">
+              Live Preview
             </a>
-            <a *ngIf="project.repoUrl" [href]="project.repoUrl" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:underline">
+            <a [href]="project['repo-link']" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:underline">
               Source Code
             </a>
           </div>
